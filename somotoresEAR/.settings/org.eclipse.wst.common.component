@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?><project-modules id="moduleCoreId" project-version="1.5.0">
+    <wb-module deploy-name="somotoresEAR">
+        <wb-resource deploy-path="/" source-path="/EarContent" tag="defaultRootSource"/>
+        <dependent-module archiveName="somotoresMob.war" deploy-path="/" handle="module:/resource/somotoresMob/somotoresMob">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="somotoresWeb.war" deploy-path="/" handle="module:/resource/somotoresWeb/somotoresWeb">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="somotoresService.jar" deploy-path="/" handle="module:/resource/somotoresService/somotoresService">
+            <dependent-object/>
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+        <dependent-module archiveName="somotoresPersistence.jar" deploy-path="/lib" handle="module:/resource/somotoresPersistence/somotoresPersistence">
+            <dependency-type>uses</dependency-type>
+        </dependent-module>
+    </wb-module>
+</project-modules>
