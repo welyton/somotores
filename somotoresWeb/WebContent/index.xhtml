@@ -4,22 +4,31 @@
 	xmlns:f="http://java.sun.com/jsf/core"
 	xmlns:p="http://primefaces.org/ui">
 
-<h:head>
-	<title>Só Motores - Login</title>
-</h:head>
+<h:head />
 <h:body>
-	<h:form>
-		<h:outputLabel for="login" value="Login:" />
-		<p:inputText id="login" required="true" value="#{loginMB.login}" />
-		<br/>
+	<ui:composition template="layout/template.xhtml">
+		<ui:define name="titulo">Login</ui:define>
+		<ui:define name="cabecalho"></ui:define>
+		<ui:define name="conteudo">
+			<h:form styleClass="form">
+			<div class="control-group">
+				<h:outputLabel for="login" value="Login:"/>
+				<div class="controls"><p:inputText id="login" required="true" value="#{loginMB.login}" /></div>
+			</div>
+			<div class="control-group">
+				<h:outputLabel for="senha" value="Senha:" />
+				<div class="controls"><p:inputText id="senha" required="true" type="password" value="#{loginMB.senha}" /></div>
+			</div>
+			<div class="control-group">
+				<div class="controls">
+					<p:commandButton value="Entrar" action="#{loginMB.logar()}" ajax="false" />
+					<h:messages />
+				</div>
+			</div>
+			</h:form>
+		</ui:define>
+		<ui:define name="rodape"></ui:define>
+	</ui:composition>
 
-		<h:outputLabel for="senha" value="Senha:" />
-		<p:inputText id="senha" required="true" type="password" value="#{loginMB.senha}" />
-		<br/>
-
-		<p:commandButton value="Entrar" action="#{loginMB.logar()}" ajax="false" />
-
-		<h:messages />
-	</h:form>
 </h:body>
 </html>
