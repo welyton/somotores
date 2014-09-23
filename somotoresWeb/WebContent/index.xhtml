@@ -1,34 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
 
-<h:head />
-<h:body>
-	<ui:composition template="layout/template.xhtml">
-		<ui:define name="titulo">Login</ui:define>
-		<ui:define name="cabecalho"></ui:define>
-		<ui:define name="conteudo">
-			<h:form styleClass="form">
-			<div class="control-group">
-				<h:outputLabel for="login" value="Login:"/>
-				<div class="controls"><p:inputText id="login" required="true" value="#{loginMB.login}" /></div>
-			</div>
-			<div class="control-group">
-				<h:outputLabel for="senha" value="Senha:" />
-				<div class="controls"><p:inputText id="senha" required="true" type="password" value="#{loginMB.senha}" /></div>
-			</div>
-			<div class="control-group">
-				<div class="controls">
-					<p:commandButton value="Entrar" action="#{loginMB.logar()}" ajax="false" />
-					<h:messages />
-				</div>
-			</div>
-			</h:form>
-		</ui:define>
-		<ui:define name="rodape"></ui:define>
-	</ui:composition>
+    <ui:composition template="/layout/template.xhtml">
+        <ui:define name="title">Home</ui:define>
+        <ui:define name="body">
+            <p:panel header="Só Motores - Sistema de Gerenciamento de Entregas">
+                <p><h:outputText value="Página Alertas"></h:outputText></p>
+            </p:panel>
 
-</h:body>
+        </ui:define>
+
+    </ui:composition>
+
 </html>

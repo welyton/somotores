@@ -6,17 +6,16 @@ import javax.faces.bean.ManagedBean;
 import javax.faces.bean.RequestScoped;
 import javax.faces.context.FacesContext;
 
-import br.com.somotoresentregas.sessionbeans.LogarBean;
+import br.com.somotoresentregas.sessionbeans.UsuarioBean;
 
-
-@ManagedBean(name="loginMB")
+@ManagedBean
 @RequestScoped
 public class LoginMB {
 	private String login;
 	private String senha;
 	
 	@EJB
-	private LogarBean loginEjb;
+	private UsuarioBean usuarioService;
 	
 	public String getLogin() {
 		return login;
@@ -32,7 +31,7 @@ public class LoginMB {
 	}
 	
 	public String logar(){
-		if (loginEjb.logar(login, senha)) {
+		if (usuarioService.logarUsuario(login, senha)) {
 			return "home";
 		} else{
 			FacesMessage fm = new FacesMessage("Login ou Senha Inválido");
