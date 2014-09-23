@@ -1,17 +1,24 @@
 package br.com.somotoresentregas.entities;
 
 import java.io.Serializable;
-import javax.persistence.*;
 import java.math.BigDecimal;
 import java.util.List;
 
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.NamedQueries;
+import javax.persistence.NamedQuery;
+import javax.persistence.OneToMany;
+import javax.persistence.Table;
 
-/**
- * The persistent class for the produto database table.
- * 
- */
 @Entity
-@NamedQuery(name="Produto.findAll", query="SELECT p FROM Produto p")
+@Table(name="produto")
+@NamedQueries({
+	@NamedQuery(name="Produto.findAll", query="SELECT p FROM Produto p"),
+	@NamedQuery(name="Produto.findById", query="SELECT p FROM Produto p WHERE p.produtoID = :id")})
 public class Produto implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -38,6 +45,11 @@ public class Produto implements Serializable {
 	private List<ProdutoEntrega> produtoEntregas;
 
 	public Produto() {
+		this.marca = "Marca";
+		this.modelo = "Modelo";
+		this.nome = "Nome";
+		this.sku = 1111;
+		this.precoUnitario = new BigDecimal(1.00);
 	}
 
 	public int getProdutoID() {

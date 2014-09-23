@@ -5,13 +5,11 @@ import javax.persistence.*;
 import java.util.Date;
 import java.util.List;
 
-
-/**
- * The persistent class for the usuario database table.
- * 
- */
 @Entity
-@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u")
+@Table(name="usuario")
+@NamedQueries({
+	@NamedQuery(name="Usuario.findAll", query="SELECT u FROM Usuario u"),
+	@NamedQuery(name="Usuario.findByLogin", query="SELECT u FROM Usuario u WHERE u.login = :login AND u.senha = :senha")})
 public class Usuario implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -40,9 +38,9 @@ public class Usuario implements Serializable {
 
 	private String estado;
 
-	private byte isAtivo;
+	private int isAtivo;
 
-	private byte isLogado;
+	private int isLogado;
 
 	private float latitude;
 
@@ -168,19 +166,19 @@ public class Usuario implements Serializable {
 		this.estado = estado;
 	}
 
-	public byte getIsAtivo() {
+	public int getIsAtivo() {
 		return this.isAtivo;
 	}
 
-	public void setIsAtivo(byte isAtivo) {
+	public void setIsAtivo(int isAtivo) {
 		this.isAtivo = isAtivo;
 	}
 
-	public byte getIsLogado() {
+	public int getIsLogado() {
 		return this.isLogado;
 	}
 
-	public void setIsLogado(byte isLogado) {
+	public void setIsLogado(int isLogado) {
 		this.isLogado = isLogado;
 	}
 

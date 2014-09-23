@@ -5,11 +5,19 @@
 	<persistence-unit name="somotoresPersistence">
 		<provider>org.eclipse.persistence.jpa.PersistenceProvider</provider>
 		<jta-data-source>jdbc/somotores</jta-data-source>
+		
 		<class>br.com.somotoresentregas.entities.Categoria</class>
 		<class>br.com.somotoresentregas.entities.Entrega</class>
 		<class>br.com.somotoresentregas.entities.Produto</class>
 		<class>br.com.somotoresentregas.entities.ProdutoEntrega</class>
 		<class>br.com.somotoresentregas.entities.Usuario</class>
+		<class>br.com.somotoresentregas.views.Entregadores</class>
+		<class>br.com.somotoresentregas.views.EntregasAberto</class>
+		<class>br.com.somotoresentregas.views.EntregasAndamento</class>
+		<class>br.com.somotoresentregas.views.EntregasConcluida</class>
+		<class>br.com.somotoresentregas.views.Alertas</class>
+		<class>br.com.somotoresentregas.views.AlertasDiferenca</class>
+		<class>br.com.somotoresentregas.views.Produtos</class>
 
 		<properties>
 			<property name="eclipselink.logging.level.sql" value="FINE" />

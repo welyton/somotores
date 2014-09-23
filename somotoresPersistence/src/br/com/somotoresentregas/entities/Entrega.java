@@ -1,7 +1,9 @@
 package br.com.somotoresentregas.entities;
 
 import java.io.Serializable;
+
 import javax.persistence.*;
+
 import java.sql.Timestamp;
 import java.math.BigDecimal;
 import java.util.List;
@@ -12,7 +14,10 @@ import java.util.List;
  * 
  */
 @Entity
-@NamedQuery(name="Entrega.findAll", query="SELECT e FROM Entrega e")
+@Table(name="entrega")
+@NamedQueries({
+	@NamedQuery(name="Entrega.findAll", query="SELECT e FROM Entrega e"),
+	@NamedQuery(name="Entrega.findById", query="SELECT e FROM Entrega e WHERE e.entregaID = :id")})
 public class Entrega implements Serializable {
 	private static final long serialVersionUID = 1L;
 
@@ -44,7 +49,7 @@ public class Entrega implements Serializable {
 
 	private Timestamp fechadoDate;
 
-	private byte isAlerta;
+	private int isAlerta;
 
 	private int numero;
 
@@ -184,11 +189,11 @@ public class Entrega implements Serializable {
 		this.fechadoDate = fechadoDate;
 	}
 
-	public byte getIsAlerta() {
+	public int getIsAlerta() {
 		return this.isAlerta;
 	}
 
-	public void setIsAlerta(byte isAlerta) {
+	public void setIsAlerta(int isAlerta) {
 		this.isAlerta = isAlerta;
 	}
 
