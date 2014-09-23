@@ -1,0 +1,119 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="UsuarioEditDlg" widgetVar="UsuarioEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{prop.EditUsuarioTitle}" closeOnEscape="true">
+
+            <h:form id="UsuarioEditForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="UsuarioTabView">
+
+                        <p:tab id="UsuarioTab1" title="#{prop.TabHeaderPrefix} 1">
+                            <p:panelGrid  columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+
+                                <h:outputLabel value="#{prop.EditUsuarioLabel_usuarioID}" for="usuarioID" />
+                                <h:outputText id="usuarioID" value="#{usuarioController.selected.usuarioID}" />
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_matricula}" for="matricula" />
+                                <p:inputText id="matricula" value="#{usuarioController.selected.matricula}" title="#{prop.EditUsuarioTitle_matricula}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_matricula}" size="3" maxlength="3"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_nome}" for="nome" />
+                                <p:inputText id="nome" value="#{usuarioController.selected.nome}" title="#{prop.EditUsuarioTitle_nome}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_nome}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_sobrenome}" for="sobrenome" />
+                                <p:inputText id="sobrenome" value="#{usuarioController.selected.sobrenome}" title="#{prop.EditUsuarioTitle_sobrenome}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_sobrenome}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_sexo}" for="sexo" />
+                                <p:inputText id="sexo" value="#{usuarioController.selected.sexo}" title="#{prop.EditUsuarioTitle_sexo}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_sexo}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_cpf}" for="cpf" />
+                                <p:inputText id="cpf" value="#{usuarioController.selected.cpf}" title="#{prop.EditUsuarioTitle_cpf}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_cpf}" size="11" maxlength="11"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_rg}" for="rg" />
+                                <p:inputText id="rg" value="#{usuarioController.selected.rg}" title="#{prop.EditUsuarioTitle_rg}" size="8" maxlength="8"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_nascimentoDate}" for="nascimentoDate" />
+                                <p:calendar id="nascimentoDate" pattern="MM/dd/yyyy" value="#{usuarioController.selected.nascimentoDate}" title="#{prop.EditUsuarioTitle_nascimentoDate}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_nascimentoDate}" showOn="button"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_telefone}" for="telefone" />
+                                <p:inputText id="telefone" value="#{usuarioController.selected.telefone}" title="#{prop.EditUsuarioTitle_telefone}" size="20" maxlength="20"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_email}" for="email" />
+                                <p:inputText id="email" value="#{usuarioController.selected.email}" title="#{prop.EditUsuarioTitle_email}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_login}" for="login" />
+                                <p:inputText id="login" value="#{usuarioController.selected.login}" title="#{prop.EditUsuarioTitle_login}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_login}" size="20" maxlength="20"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_senha}" for="senha" />
+                                <p:inputText id="senha" value="#{usuarioController.selected.senha}" title="#{prop.EditUsuarioTitle_senha}" required="true" requiredMessage="#{prop.EditUsuarioRequiredMessage_senha}" size="8" maxlength="8"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_endereco}" for="endereco" />
+                                <p:inputText id="endereco" value="#{usuarioController.selected.endereco}" title="#{prop.EditUsuarioTitle_endereco}" size="100" maxlength="100"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_numero}" for="numero" />
+                                <p:inputText id="numero" value="#{usuarioController.selected.numero}" title="#{prop.EditUsuarioTitle_numero}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_complemento}" for="complemento" />
+                                <p:inputText id="complemento" value="#{usuarioController.selected.complemento}" title="#{prop.EditUsuarioTitle_complemento}" size="40" maxlength="40"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_bairro}" for="bairro" />
+                                <p:inputText id="bairro" value="#{usuarioController.selected.bairro}" title="#{prop.EditUsuarioTitle_bairro}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_cidade}" for="cidade" />
+                                <p:inputText id="cidade" value="#{usuarioController.selected.cidade}" title="#{prop.EditUsuarioTitle_cidade}" size="30" maxlength="30"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_estado}" for="estado" />
+                                <p:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{prop.EditUsuarioTitle_estado}" size="2" maxlength="2"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_cep}" for="cep" />
+                                <p:inputText id="cep" value="#{usuarioController.selected.cep}" title="#{prop.EditUsuarioTitle_cep}" size="8" maxlength="8"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_perfil}" for="perfil" />
+                                <p:inputText id="perfil" value="#{usuarioController.selected.perfil}" title="#{prop.EditUsuarioTitle_perfil}"/>
+
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="UsuarioTab2" title="#{prop.TabHeaderPrefix} 2">
+                            <p:panelGrid  columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_isAtivo}" for="isAtivo" />
+                                <p:inputText id="isAtivo" value="#{usuarioController.selected.isAtivo}" title="#{prop.EditUsuarioTitle_isAtivo}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_isLogado}" for="isLogado" />
+                                <p:inputText id="isLogado" value="#{usuarioController.selected.isLogado}" title="#{prop.EditUsuarioTitle_isLogado}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_latitude}" for="latitude" />
+                                <p:inputText id="latitude" value="#{usuarioController.selected.latitude}" title="#{prop.EditUsuarioTitle_latitude}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_longitude}" for="longitude" />
+                                <p:inputText id="longitude" value="#{usuarioController.selected.longitude}" title="#{prop.EditUsuarioTitle_longitude}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_veiculo}" for="veiculo" />
+                                <p:inputText id="veiculo" value="#{usuarioController.selected.veiculo}" title="#{prop.EditUsuarioTitle_veiculo}" size="50" maxlength="50"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_autorizadorID}" for="autorizadorID" />
+                                <p:inputText id="autorizadorID" value="#{usuarioController.selected.autorizadorID}" title="#{prop.EditUsuarioTitle_autorizadorID}"/>
+
+                                <p:outputLabel value="#{prop.EditUsuarioLabel_autorizacaoDate}" for="autorizacaoDate" />
+                                <p:calendar id="autorizacaoDate" pattern="MM/dd/yyyy" value="#{usuarioController.selected.autorizacaoDate}" title="#{prop.EditUsuarioTitle_autorizacaoDate}"  showOn="button"/>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton actionListener="#{usuarioController.save}" value="#{prop.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UsuarioEditDialog);">
+                        <p:confirm header="#{prop.ConfirmationHeader}" message="#{prop.ConfirmEditMessage}" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="#{prop.Cancel}" onclick="UsuarioEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

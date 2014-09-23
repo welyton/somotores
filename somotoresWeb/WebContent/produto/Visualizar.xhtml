@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="ProdutoViewDlg" widgetVar="ProdutoViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="Visualizar Produto" closeOnEscape="true">
+            <h:form id="ProdutoViewForm">
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{produtoMB.selecionado != null}">
+
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{produtoMB.selecionado.produtoID}" title="ID"/>
+
+                        <h:outputText value="Marca"/>
+                        <h:outputText value="#{produtoMB.selecionado.marca}" title="Marca"/>
+
+                        <h:outputText value="Modelo"/>
+                        <h:outputText value="#{produtoMB.selecionado.modelo}" title="Modelo"/>
+
+                        <h:outputText value="Nome"/>
+                        <h:outputText value="#{produtoMB.selecionado.nome}" title="Nome"/>
+
+                        <h:outputText value="SKU"/>
+                        <h:outputText value="#{produtoMB.selecionado.sku}" title="SKU"/>
+
+                        <h:outputText value="Preço (R$)"/>
+                        <h:outputText value="#{produtoMB.selecionado.precoUnitario}" title="Preço (R$)"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Fechar" onclick="ProdutoViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

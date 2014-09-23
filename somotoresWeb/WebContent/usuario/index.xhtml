@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/layout/template.xhtml">
+
+    <ui:define name="title">Gerenciamento de Usuários</ui:define>
+
+    <ui:define name="body">
+
+        <ui:include src="/usuario/Listar.xhtml"/>
+        <ui:include src="/usuario/Visualizar.xhtml"/>
+        <ui:include src="/usuario/Editar.xhtml"/>
+        <ui:include src="/usuario/Cadastrar.xhtml"/>
+
+    </ui:define>
+
+</ui:composition>

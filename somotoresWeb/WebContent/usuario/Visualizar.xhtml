@@ -1,0 +1,120 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{prop.ViewUsuarioTitle}" closeOnEscape="true">
+
+            <h:form id="UsuarioViewForm">
+
+                <h:panelGroup id="display">
+                    <p:tabView id="UsuarioTabView">
+
+                        <p:tab id="UsuarioTab1" title="#{prop.TabHeaderPrefix} 1">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+                                <h:outputText value="#{prop.ViewUsuarioLabel_usuarioID}"/>
+                                <h:outputText value="#{usuarioController.selected.usuarioID}" title="#{prop.ViewUsuarioTitle_usuarioID}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_matricula}"/>
+                                <h:outputText value="#{usuarioController.selected.matricula}" title="#{prop.ViewUsuarioTitle_matricula}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_nome}"/>
+                                <h:outputText value="#{usuarioController.selected.nome}" title="#{prop.ViewUsuarioTitle_nome}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_sobrenome}"/>
+                                <h:outputText value="#{usuarioController.selected.sobrenome}" title="#{prop.ViewUsuarioTitle_sobrenome}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_sexo}"/>
+                                <h:outputText value="#{usuarioController.selected.sexo}" title="#{prop.ViewUsuarioTitle_sexo}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_cpf}"/>
+                                <h:outputText value="#{usuarioController.selected.cpf}" title="#{prop.ViewUsuarioTitle_cpf}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_rg}"/>
+                                <h:outputText value="#{usuarioController.selected.rg}" title="#{prop.ViewUsuarioTitle_rg}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_nascimentoDate}"/>
+                                <h:outputText value="#{usuarioController.selected.nascimentoDate}" title="#{prop.ViewUsuarioTitle_nascimentoDate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_telefone}"/>
+                                <h:outputText value="#{usuarioController.selected.telefone}" title="#{prop.ViewUsuarioTitle_telefone}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_email}"/>
+                                <h:outputText value="#{usuarioController.selected.email}" title="#{prop.ViewUsuarioTitle_email}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_login}"/>
+                                <h:outputText value="#{usuarioController.selected.login}" title="#{prop.ViewUsuarioTitle_login}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_senha}"/>
+                                <h:outputText value="#{usuarioController.selected.senha}" title="#{prop.ViewUsuarioTitle_senha}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_endereco}"/>
+                                <h:outputText value="#{usuarioController.selected.endereco}" title="#{prop.ViewUsuarioTitle_endereco}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_numero}"/>
+                                <h:outputText value="#{usuarioController.selected.numero}" title="#{prop.ViewUsuarioTitle_numero}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_complemento}"/>
+                                <h:outputText value="#{usuarioController.selected.complemento}" title="#{prop.ViewUsuarioTitle_complemento}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_bairro}"/>
+                                <h:outputText value="#{usuarioController.selected.bairro}" title="#{prop.ViewUsuarioTitle_bairro}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_cidade}"/>
+                                <h:outputText value="#{usuarioController.selected.cidade}" title="#{prop.ViewUsuarioTitle_cidade}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_estado}"/>
+                                <h:outputText value="#{usuarioController.selected.estado}" title="#{prop.ViewUsuarioTitle_estado}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_cep}"/>
+                                <h:outputText value="#{usuarioController.selected.cep}" title="#{prop.ViewUsuarioTitle_cep}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_perfil}"/>
+                                <h:outputText value="#{usuarioController.selected.perfil}" title="#{prop.ViewUsuarioTitle_perfil}"/>
+
+                            </p:panelGrid>
+                        </p:tab>
+                        <p:tab id="UsuarioTab2" title="#{prop.TabHeaderPrefix} 2">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
+                                <h:outputText value="#{prop.ViewUsuarioLabel_isAtivo}"/>
+                                <h:outputText value="#{usuarioController.selected.isAtivo}" title="#{prop.ViewUsuarioTitle_isAtivo}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_isLogado}"/>
+                                <h:outputText value="#{usuarioController.selected.isLogado}" title="#{prop.ViewUsuarioTitle_isLogado}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_latitude}"/>
+                                <h:outputText value="#{usuarioController.selected.latitude}" title="#{prop.ViewUsuarioTitle_latitude}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_longitude}"/>
+                                <h:outputText value="#{usuarioController.selected.longitude}" title="#{prop.ViewUsuarioTitle_longitude}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_veiculo}"/>
+                                <h:outputText value="#{usuarioController.selected.veiculo}" title="#{prop.ViewUsuarioTitle_veiculo}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_autorizadorID}"/>
+                                <h:outputText value="#{usuarioController.selected.autorizadorID}" title="#{prop.ViewUsuarioTitle_autorizadorID}"/>
+
+                                <h:outputText value="#{prop.ViewUsuarioLabel_autorizacaoDate}"/>
+                                <h:outputText value="#{usuarioController.selected.autorizacaoDate}" title="#{prop.ViewUsuarioTitle_autorizacaoDate}">
+                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                </h:outputText>
+                            </p:panelGrid>
+                        </p:tab>
+                    </p:tabView>
+                    <p:commandButton value="#{prop.Close}" onclick="UsuarioViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

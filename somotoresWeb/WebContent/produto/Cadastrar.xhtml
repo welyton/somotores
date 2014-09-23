@@ -1,0 +1,44 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="ProdutoCreateDlg" widgetVar="ProdutoCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Cadastrar Produto" closeOnEscape="true">
+            <h:form id="ProdutoCreateForm">
+                <h:panelGroup id="display" rendered="#{produtoMB.selecionado != null}">
+                    <p:panelGrid columns="2" columnClasses="column">
+
+                        <p:outputLabel value="Marca" for="marca" />
+                        <p:inputText id="marca" value="#{produtoMB.selecionado.marca}" title="Marca" required="true" requiredMessage="O preenchimento da marca do produto é obrigatório" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="Modelo" for="modelo" />
+                        <p:inputText id="modelo" value="#{produtoMB.selecionado.modelo}" title="Modelo" required="true" requiredMessage="O preenchimento do modelo do produto é obrigatório" size="30" maxlength="30"/>
+
+                        <p:outputLabel value="Nome" for="nome" />
+                        <p:inputText id="nome" value="#{produtoMB.selecionado.nome}" title="Nome" required="true" requiredMessage="O preenchimento do nome do produto é obrigatório" size="50" maxlength="50"/>
+
+                        <p:outputLabel value="SKU" for="sku" />
+                        <p:inputText id="sku" value="#{produtoMB.selecionado.sku}" title="SKU" required="true" requiredMessage="O preenchimento do código de Stock Keeping Unit é obrigatório"/>
+
+                        <p:outputLabel value="Preço (R$)" for="precoUnitario" />
+                        <p:inputText id="precoUnitario" value="#{produtoMB.selecionado.precoUnitario}" title="Preço (R$)" required="true" requiredMessage="O preenchimento do preço unitário do produto é obrigatório (formato: 00.00)"/>
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{produtoMB.insere}" value="Cadastrar" update="display,:ProdutoListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,ProdutoCreateDialog);">
+                        <p:confirm header="Cadastro de Produto" message="Confirmar o cadastramento do Produto?" icon="ui-icon-alert"/>
+                    </p:commandButton>
+
+                    <p:commandButton value="Cancelar" onclick="ProdutoCreateDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

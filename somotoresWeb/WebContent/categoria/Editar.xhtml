@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+        <p:dialog id="CategoriaEditDlg" widgetVar="CategoriaEditDialog" modal="true" resizable="false"  appendTo="@(body)" header="Editar Categoria" closeOnEscape="true">
+
+            <h:form id="CategoriaEditForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid  columns="2" columnClasses="column" rendered="#{categoriaMB.selecionado != null}">
+
+                        <p:outputLabel value="Categoria" for="nome" />
+                        <p:inputText id="nome" value="#{categoriaMB.selecionado.nome}" title="Categoria" required="true" requiredMessage="O preenchimento do nome da categoria é obrigatório" size="30" maxlength="30"/>
+
+                    </p:panelGrid>
+                    <p:commandButton actionListener="#{categoriaMB.atualiza}" value="Salvar" update="display,:CategoriaListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,CategoriaEditDialog);">
+                        <p:confirm header="Edição de Categoria" message="Salvar Alterações?" icon="ui-icon-alert"/>
+                    </p:commandButton>
+                    <p:commandButton value="Cancelar" onclick="CategoriaEditDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>

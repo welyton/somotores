@@ -1,0 +1,267 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="UsuarioListForm">
+
+        <p:panel header="#{prop.ListUsuarioTitle}">
+            <p:contextMenu id="UsuarioDataTableContextMenu" for="datalist">  
+                <p:menuitem value="#{prop.Create}" onclick="document.getElementById('UsuarioListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="#{prop.View}" onclick="document.getElementById('UsuarioListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="#{prop.Edit}" onclick="document.getElementById('UsuarioListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="#{prop.Delete}" onclick="document.getElementById('UsuarioListForm:deleteButton').click();" icon="ui-icon-trash"/>
+                <p:separator/>
+                <p:menuitem value="#{prop.UsuarioMenuItem_entregaList}" icon="ui-icon-search"  action="#{usuarioController.navigateEntregaList}" disabled="#{empty usuarioController.selected.entregaList}" ajax="false"/>  
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{usuarioController.items}"
+                         var="item"
+                         rowKey="#{item.usuarioID}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20"
+                         selectionMode="single"
+                         selection="#{usuarioController.selected}">
+
+                <p:ajax event="rowSelect"   update=":UsuarioListForm:createButton :UsuarioListForm:viewButton :UsuarioListForm:editButton :UsuarioListForm:deleteButton :UsuarioListForm:UsuarioDataTableContextMenu" listener="#{usuarioController.resetParents}"/>
+                <p:ajax event="rowUnselect" update=":UsuarioListForm:createButton :UsuarioListForm:viewButton :UsuarioListForm:editButton :UsuarioListForm:deleteButton :UsuarioListForm:UsuarioDataTableContextMenu" listener="#{usuarioController.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('UsuarioListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.usuarioID}" filterBy="#{item.usuarioID}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_usuarioID}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.usuarioID}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.matricula}" filterBy="#{item.matricula}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_matricula}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.matricula}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nome}" filterBy="#{item.nome}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_nome}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.sobrenome}" filterBy="#{item.sobrenome}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_sobrenome}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.sobrenome}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.sexo}" filterBy="#{item.sexo}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_sexo}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.sexo}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.cpf}" filterBy="#{item.cpf}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_cpf}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.cpf}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.rg}" filterBy="#{item.rg}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_rg}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.rg}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nascimentoDate}" filterBy="#{item.nascimentoDate}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_nascimentoDate}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nascimentoDate}">
+                        <f:convertDateTime pattern="MM/dd/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.telefone}" filterBy="#{item.telefone}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_telefone}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.email}" filterBy="#{item.email}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_email}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.login}" filterBy="#{item.login}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_login}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.login}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.senha}" filterBy="#{item.senha}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_senha}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.senha}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.endereco}" filterBy="#{item.endereco}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_endereco}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.endereco}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.numero}" filterBy="#{item.numero}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_numero}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.numero}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.complemento}" filterBy="#{item.complemento}">
+                    <f:facet name="header">
+                        <h:outputText value="#{prop.ListUsuarioTitle_complemento}"/>
+                    </f:facet>
+                    <h:outputText value="#{item.complemento}"/>
+                </p:column>
+
+                <!--
+                                    <p:column sortBy="#{item.bairro}" filterBy="#{item.bairro}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_bairro}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.bairro}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.cidade}" filterBy="#{item.cidade}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_cidade}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cidade}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.estado}" filterBy="#{item.estado}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_estado}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.estado}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.cep}" filterBy="#{item.cep}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_cep}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.cep}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.perfil}" filterBy="#{item.perfil}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_perfil}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.perfil}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.isAtivo}" filterBy="#{item.isAtivo}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_isAtivo}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.isAtivo}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.isLogado}" filterBy="#{item.isLogado}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_isLogado}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.isLogado}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.latitude}" filterBy="#{item.latitude}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_latitude}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.latitude}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.longitude}" filterBy="#{item.longitude}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_longitude}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.longitude}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.veiculo}" filterBy="#{item.veiculo}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_veiculo}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.veiculo}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.autorizadorID}" filterBy="#{item.autorizadorID}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_autorizadorID}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.autorizadorID}"/>
+                                    </p:column>
+                -->
+                <!--
+                                    <p:column sortBy="#{item.autorizacaoDate}" filterBy="#{item.autorizacaoDate}">
+                                        <f:facet name="header">
+                                            <h:outputText value="#{prop.ListUsuarioTitle_autorizacaoDate}"/>
+                                        </f:facet>
+                                        <h:outputText value="#{item.autorizacaoDate}">
+                                            <f:convertDateTime pattern="MM/dd/yyyy" />
+                                        </h:outputText>
+                                    </p:column>
+                -->
+
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="#{prop.Create}" actionListener="#{usuarioController.prepareCreate}" update=":UsuarioCreateForm" oncomplete="UsuarioCreateDialog.show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="#{prop.View}" update=":UsuarioViewForm" oncomplete="UsuarioViewDialog.show()" disabled="#{empty usuarioController.selected}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="#{prop.Edit}" update=":UsuarioEditForm" oncomplete="UsuarioEditDialog.show()" disabled="#{empty usuarioController.selected}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="#{prop.Delete}" actionListener="#{usuarioController.delete}" update=":growl,datalist" disabled="#{empty usuarioController.selected}">
+                <p:confirm header="#{prop.ConfirmationHeader}" message="#{prop.ConfirmDeleteMessage}" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/confirmation.xhtml"/>
+    </h:form>
+
+</ui:composition>

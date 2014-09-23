@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+
+    <ui:composition>
+
+        <p:dialog id="CategoriaViewDlg" widgetVar="CategoriaViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="Visualizar Categoria" closeOnEscape="true">
+
+            <h:form id="CategoriaViewForm">
+
+                <h:panelGroup id="display">
+                    <p:panelGrid columns="2" columnClasses="column" rendered="#{categoriaMB.selecionado != null}">
+
+                        <h:outputText value="ID"/>
+                        <h:outputText value="#{categoriaMB.selecionado.categoriaID}" title="ID"/>
+
+                        <h:outputText value="Categoria"/>
+                        <h:outputText value="#{categoriaMB.selecionado.nome}" title="Categoria"/>
+                    </p:panelGrid>
+                    <p:commandButton value="Fechar" onclick="CategoriaViewDialog.hide()"/>
+                </h:panelGroup>
+
+            </h:form>
+
+        </p:dialog>
+
+    </ui:composition>
+
+</html>
