@@ -4,7 +4,7 @@
   <module>
     <web>
       <web-uri>somotoresMob.war</web-uri>
-      <context-root>mobile</context-root>
+      <context-root>/mob</context-root>
     </web>
   </module>
   <module>
