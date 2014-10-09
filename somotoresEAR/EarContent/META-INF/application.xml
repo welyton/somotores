@@ -3,12 +3,6 @@
   <display-name>somotoresEAR</display-name>
   <module>
     <web>
-      <web-uri>somotoresMob.war</web-uri>
-      <context-root>/mob</context-root>
-    </web>
-  </module>
-  <module>
-    <web>
       <web-uri>somotoresWeb.war</web-uri>
       <context-root>/</context-root>
     </web>

@@ -1,0 +1,113 @@
+<?xml version="1.0" encoding="ISO-8859-1" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+
+    <h:form id="UsuarioListForm">
+        <p:panel header="Usuários Cadastrados">
+            <p:contextMenu id="UsuarioDataTableContextMenu" for="datalist">  
+                <p:menuitem value="Cadastrar" onclick="document.getElementById('UsuarioListForm:createButton').click();" icon="ui-icon-plus"/>
+                <p:menuitem value="Visualizar" onclick="document.getElementById('UsuarioListForm:viewButton').click();" icon="ui-icon-search"/>
+                <p:menuitem value="Editar" onclick="document.getElementById('UsuarioListForm:editButton').click();" icon="ui-icon-pencil"/>
+                <p:menuitem value="Excluir" onclick="document.getElementById('UsuarioListForm:deleteButton').click();" icon="ui-icon-trash"/>
+            </p:contextMenu>
+            <p:dataTable id="datalist"
+                         value="#{usuarioMB.listaItens}"
+                         var="item"
+                         rowKey="#{item.usuarioID}"
+                         paginator="true"
+                         rows="5"
+                         rowsPerPageTemplate="5,10,20"
+                         selectionMode="single"
+                         selection="#{usuarioMB.selecionado}">
+
+                <p:ajax event="rowSelect"   update=":UsuarioListForm:createButton :UsuarioListForm:viewButton :UsuarioListForm:editButton :UsuarioListForm:deleteButton :UsuarioListForm:UsuarioDataTableContextMenu" listener="#{usuarioMB.resetParents}"/>
+                <p:ajax event="rowUnselect" update=":UsuarioListForm:createButton :UsuarioListForm:viewButton :UsuarioListForm:editButton :UsuarioListForm:deleteButton :UsuarioListForm:UsuarioDataTableContextMenu" listener="#{usuarioMB.resetParents}"/>
+                <p:ajax event="rowDblselect" onsuccess="document.getElementById('UsuarioListForm:viewButton').click();"/>
+
+                <p:column sortBy="#{item.usuarioID}" filterBy="#{item.usuarioID}">
+                    <f:facet name="header">
+                        <h:outputText value="ID"/>
+                    </f:facet>
+                    <h:outputText value="#{item.usuarioID}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.matricula}" filterBy="#{item.matricula}">
+                    <f:facet name="header">
+                        <h:outputText value="Matrícula"/>
+                    </f:facet>
+                    <h:outputText value="#{item.matricula}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.nome}" filterBy="#{item.nome}">
+                    <f:facet name="header">
+                        <h:outputText value="Nome"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nome}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.sobrenome}" filterBy="#{item.sobrenome}">
+                    <f:facet name="header">
+                        <h:outputText value="Sobrenome"/>
+                    </f:facet>
+                    <h:outputText value="#{item.sobrenome}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.cpf}" filterBy="#{item.cpf}">
+                    <f:facet name="header">
+                        <h:outputText value="CPF"/>
+                    </f:facet>
+                    <h:outputText value="#{item.cpf}"/>
+                </p:column>
+
+                <p:column sortBy="#{item.nascimentoDate}" filterBy="#{item.nascimentoDate}">
+                    <f:facet name="header">
+                        <h:outputText value="Data de Nascimento"/>
+                    </f:facet>
+                    <h:outputText value="#{item.nascimentoDate}">
+                        <f:convertDateTime pattern="dd/MM/yyyy" />
+                    </h:outputText>
+                </p:column>
+
+
+                <p:column sortBy="#{item.telefone}" filterBy="#{item.telefone}">
+                    <f:facet name="header">
+                        <h:outputText value="Telefone"/>
+                    </f:facet>
+                    <h:outputText value="#{item.telefone}"/>
+                </p:column>
+
+
+                <p:column sortBy="#{item.email}" filterBy="#{item.email}">
+                    <f:facet name="header">
+                        <h:outputText value="E-mail"/>
+                    </f:facet>
+                    <h:outputText value="#{item.email}"/>
+                </p:column>
+
+				<p:column sortBy="#{item.perfil}" filterBy="#{item.perfil}"> 
+					<f:facet name="header"> 
+						<h:outputText value="Perfil"/> 
+					</f:facet> 
+					<h:outputText value="#{item.perfil}"/>
+				</p:column>
+            </p:dataTable>
+
+            <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="Cadastrar" actionListener="#{usuarioMB.preparaInsercao}" update=":UsuarioCreateForm" oncomplete="UsuarioCreateDialog.show()"/>
+            <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="Visualizar" update=":UsuarioViewForm" oncomplete="UsuarioViewDialog.show()" disabled="#{empty usuarioMB.selecionado}"/>
+            <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="Editar" update=":UsuarioEditForm" oncomplete="UsuarioEditDialog.show()" disabled="#{empty usuarioMB.selecionado}"/>
+            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="Excluir" actionListener="#{usuarioMB.exclui}" update=":growl,datalist" disabled="#{empty usuarioMB.selecionado}">
+                <p:confirm header="Confirmar Exclusão" message="Tem certeza que deseja excluir o Usuário selecionado?" icon="ui-icon-alert"/>
+            </p:commandButton>
+
+        </p:panel>
+        <ui:include src="/layout/confirmacao.xhtml"/>
+    </h:form>
+
+</ui:composition>

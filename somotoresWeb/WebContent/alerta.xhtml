@@ -1,0 +1,60 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui">
+                
+<h:body>
+	<ui:composition template="/layout/template.xhtml">
+		<ui:define name="title">Alertas</ui:define>
+		<ui:define name="content">
+			<p:growl id="msg" showDetail="true" life="3000"/>
+			<h:form id="formalerta">
+				<p:spacer/>
+				<p:spacer/>
+				<p:dataTable id="tablealerta"
+							 value="#{alertaMB.listaItens}"
+                         	 var="item"
+                         	 rowKey="#{item.entregaID}"
+							 emptyMessage="Não existem alertas para serem exibidos"
+							 rows="5"
+                         	 rowsPerPageTemplate="5,10,20"
+                         	 paginator="true"
+                         	 style="margin-top: 10px; margin-bottom: 20px">
+                    <f:facet name="header">Alertas de Entregas</f:facet>
+					<p:column headerText="ID">
+						<h:outputText value="#{item.entregaID}"/>
+					</p:column>
+					<p:column headerText="Endereço">
+						<h:outputText value="#{item.endereco}"/>
+					</p:column>
+					<p:column headerText="Entregador">
+						<h:outputText value="#{item.endereco}"/>
+					</p:column>
+					<p:column headerText="Status">
+						<h:outputText value="#{item.endereco}"/>
+					</p:column>
+					<p:column headerText="Check-in">
+						<h:outputText value="#{item.endereco}"/>
+					</p:column>
+					<p:column style="width:100px">
+						<p:commandButton id="btnDelete" update=":formDeletar" oncomplete="alertaDeletar.show()" image="ui-icon-trash">
+							<f:setPropertyActionListener target="#{alertaMB.selecionado}" value="#{item}" />
+						</p:commandButton>
+					</p:column>
+				</p:dataTable>
+			</h:form>
+			<h:form id="formDeletar">
+				<p:confirmDialog id="confirmacao" message="A desativação deste alerta permanecerá por uma hora. Tem certeza?"
+							     header="Confirmar Desativação" widgetVar="alertaDeletar">
+					<h:inputHidden value="#{alertaMB.selecionado.entregaID}"/>
+					<p:commandButton id="btnAceitar" value="Sim" actionListener="#{alertaMB.removeAlerta}" update=":formalerta:tablealerta" oncomplete="alertaDeletar.hide();" icon="ui-icon-trash"/>
+					<p:commandButton id="btnCancelar" value="Não" oncomplete="alertaDeletar.hide();" icon="ui-icon-close"/>
+				</p:confirmDialog>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>                               
+</html>

@@ -3,7 +3,6 @@
 	<name>somotoresEAR</name>
 	<comment></comment>
 	<projects>
-		<project>somotoresMob</project>
 		<project>somotoresWeb</project>
 		<project>somotoresService</project>
 		<project>somotoresPersistence</project>

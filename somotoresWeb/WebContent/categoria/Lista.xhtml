@@ -28,7 +28,7 @@
                 <p:ajax event="rowUnselect" update=":CategoriaListForm:createButton :CategoriaListForm:viewButton :CategoriaListForm:editButton :CategoriaListForm:deleteButton :CategoriaListForm:CategoriaDataTableContextMenu" listener="#{categoriaMB.resetParents}"/>
                 <p:ajax event="rowDblselect" onsuccess="document.getElementById('CategoriaListForm:viewButton').click();"/>
 
-                <p:column sortBy="#{item.categoriaID}" filterBy="#{item.categoriaID}">
+                <p:column sortBy="#{item.categoriaID}" filterBy="#{item.categoriaID}" width="20%">
                     <f:facet name="header">
                         <h:outputText value="ID"/>
                     </f:facet>
@@ -36,7 +36,7 @@
                 </p:column>
 
 
-                <p:column sortBy="#{item.nome}" filterBy="#{item.nome}">
+                <p:column sortBy="#{item.nome}" filterBy="#{item.nome}" width="80%">
                     <f:facet name="header">
                         <h:outputText value="Categoria"/>
                     </f:facet>
@@ -49,7 +49,7 @@
             <p:commandButton id="createButton"                             icon="ui-icon-plus"   value="Cadastrar" actionListener="#{categoriaMB.preparaInsercao}" update=":CategoriaCreateForm" oncomplete="CategoriaCreateDialog.show()"/>
             <p:commandButton id="viewButton"   style="visibility: hidden;" icon="ui-icon-search" value="Visualizar" update=":CategoriaViewForm" oncomplete="CategoriaViewDialog.show()" disabled="#{empty categoriaMB.selecionado}"/>
             <p:commandButton id="editButton"   style="visibility: hidden;" icon="ui-icon-pencil" value="Editar" update=":CategoriaEditForm" oncomplete="CategoriaEditDialog.show()" disabled="#{empty categoriaMB.selecionado}"/>
-            <p:commandButton id="deleteButton" style="visibility: hidden;" icon="ui-icon-trash"  value="Excluir" actionListener="#{categoriaMB.exclui}" update=":growl,datalist" disabled="#{empty categoriaMB.selecionado}">
+            <p:commandButton id="deleteButton" icon="ui-icon-trash"  value="Excluir" actionListener="#{categoriaMB.exclui}" update=":growl,datalist" disabled="#{empty categoriaMB.selecionado}">
                 <p:confirm header="Confirmar Exclusão" message="Tem certeza que deseja excluir a Categoria selecionada?" icon="ui-icon-alert"/>
             </p:commandButton>
 

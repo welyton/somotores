@@ -1,35 +1,51 @@
 <?xml version='1.0' encoding='UTF-8' ?> 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:ui="http://java.sun.com/jsf/facelets"
-      xmlns:h="http://java.sun.com/jsf/html"
-      xmlns:p="http://primefaces.org/ui">
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui">
 
-    <h:head>
-        <title>Só Motores SGE - <ui:insert name="title"></ui:insert></title>
-        <h:outputStylesheet library="css" name="pfcrud.css"/>
-        <h:outputScript library="scripts" name="pfcrud.js"/>
-    </h:head>
+<h:head>
+	<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="#{aplicacaoMB.pathCSS}default.css" rel="stylesheet" type="text/css" />
+    <link href="#{aplicacaoMB.pathCSS}cssLayout.css" rel="stylesheet" type="text/css"/>
+    <title>Só Motores SGE - <ui:insert name="title"></ui:insert></title>
+</h:head>
 
-    <h:body>
-
-        <p:growl id="growl" life="3000"/>
-
-        <p:layout fullPage="true">
-            <p:layoutUnit position="north" size="100">
-                <ui:insert name="header"><ui:include src="cabecalho.xhtml"/></ui:insert>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="south" size="60">
-                <ui:insert name="footer"/>
-            </p:layoutUnit>
-
-            <p:layoutUnit position="center">
-                <ui:insert name="body"/>
-            </p:layoutUnit>
-
-        </p:layout>
-
-    </h:body>
-
+<h:body>
+    <script type="text/javascript">
+    	function handleLoginRequest(xhr, status, args) {
+        	if(args.deslogado) {
+            	location.href =args.rota;
+        	}
+    	}
+	</script>
+	<div id="container">
+		<div id="top" class="ui-widget-header ui-corner-all">
+			<ui:insert name="top">Só Motores - SGE</ui:insert>
+		</div>
+		<div id="menu">
+	      	<h:form id="formMenu">
+	           <p:menubar autoDisplay="false">
+	               <p:menuitem value="Home" url="#{aplicacaoMB.contextoWeb}index.xhtml" icon="ui-icon-home"/>
+	               <p:submenu label="Gerenciar" icon="ui-icon-document">
+	                   <p:menuitem value="Categorias" url="#{aplicacaoMB.pathCategoria}index.xhtml"/>
+	                   <p:menuitem value="Produtos" url="#{aplicacaoMB.pathProduto}index.xhtml"/>
+	                   <p:menuitem value="Usuários" url="#{aplicacaoMB.pathUsuario}index.xhtml"/>
+	               </p:submenu>
+	               <p:menuitem value="Localizar Entregador" url="#{aplicacaoMB.pathLocalizador}index.xhtml" icon="ui-icon-document"/>
+	               <p:menuitem value="Alertas" url="#{aplicacaoMB.contextoWeb}alerta.xhtml" icon="ui-icon-document"/>
+	               <p:menuitem value="Sair" icon="ui-icon-close"/>
+	           </p:menubar>
+        	</h:form>
+		</div>
+        <div  class="center_content ui-panel ui-widget ui-widget-content ui-corner-all" >
+            <ui:insert name="content">conteudo</ui:insert>
+        </div>	
+        <div id="bottom" class="ui-panel ui-widget ui-widget-content ui-corner-all">
+            <ui:insert name="bottom">&copy; 2014</ui:insert>
+        </div>
+	</div>
+</h:body>
 </html>

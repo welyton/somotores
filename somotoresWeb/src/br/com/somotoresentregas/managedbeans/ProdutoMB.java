@@ -6,7 +6,7 @@ import javax.inject.Named;
 import br.com.somotoresentregas.controller.AbstractManagedBean;
 import br.com.somotoresentregas.entities.Produto;
 
-@Named(value ="produtoMB")
+@Named(value="produtoMB")
 @ViewScoped
 public class ProdutoMB extends AbstractManagedBean<Produto> {
 	

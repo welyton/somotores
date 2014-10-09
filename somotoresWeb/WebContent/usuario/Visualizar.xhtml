@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -7,108 +7,96 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-
-        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="#{prop.ViewUsuarioTitle}" closeOnEscape="true">
-
+        <p:dialog id="UsuarioViewDlg" widgetVar="UsuarioViewDialog" modal="true" resizable="false"  appendTo="@(body)" header="Visualizar Usuário" closeOnEscape="true">
             <h:form id="UsuarioViewForm">
-
                 <h:panelGroup id="display">
                     <p:tabView id="UsuarioTabView">
+                        <p:tab id="UsuarioTab1" title="Dados Cadastrais">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioMB.selecionado != null}">
 
-                        <p:tab id="UsuarioTab1" title="#{prop.TabHeaderPrefix} 1">
-                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
-                                <h:outputText value="#{prop.ViewUsuarioLabel_usuarioID}"/>
-                                <h:outputText value="#{usuarioController.selected.usuarioID}" title="#{prop.ViewUsuarioTitle_usuarioID}"/>
+                                <h:outputText value="Matrícula"/>
+                                <h:outputText value="#{usuarioMB.selecionado.matricula}" title="Matrícula"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_matricula}"/>
-                                <h:outputText value="#{usuarioController.selected.matricula}" title="#{prop.ViewUsuarioTitle_matricula}"/>
+                                <h:outputText value="Nome"/>
+                                <h:outputText value="#{usuarioMB.selecionado.nome}" title="Nome"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_nome}"/>
-                                <h:outputText value="#{usuarioController.selected.nome}" title="#{prop.ViewUsuarioTitle_nome}"/>
+                                <h:outputText value="Sobrenome"/>
+                                <h:outputText value="#{usuarioMB.selecionado.sobrenome}" title="Sobrenome"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_sobrenome}"/>
-                                <h:outputText value="#{usuarioController.selected.sobrenome}" title="#{prop.ViewUsuarioTitle_sobrenome}"/>
+                                <h:outputText value="Sexo"/>
+                                <h:outputText value="#{usuarioMB.selecionado.sexo}" title="Sexo"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_sexo}"/>
-                                <h:outputText value="#{usuarioController.selected.sexo}" title="#{prop.ViewUsuarioTitle_sexo}"/>
+                                <h:outputText value="CPF"/>
+                                <h:outputText value="#{usuarioMB.selecionado.cpf}" title="CPF"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_cpf}"/>
-                                <h:outputText value="#{usuarioController.selected.cpf}" title="#{prop.ViewUsuarioTitle_cpf}"/>
+                                <h:outputText value="RG"/>
+                                <h:outputText value="#{usuarioMB.selecionado.rg}" title="RG"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_rg}"/>
-                                <h:outputText value="#{usuarioController.selected.rg}" title="#{prop.ViewUsuarioTitle_rg}"/>
-
-                                <h:outputText value="#{prop.ViewUsuarioLabel_nascimentoDate}"/>
-                                <h:outputText value="#{usuarioController.selected.nascimentoDate}" title="#{prop.ViewUsuarioTitle_nascimentoDate}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <h:outputText value="Data de Nascimento"/>
+                                <h:outputText value="#{usuarioMB.selecionado.nascimentoDate}" title="Data de Nascimento">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_telefone}"/>
-                                <h:outputText value="#{usuarioController.selected.telefone}" title="#{prop.ViewUsuarioTitle_telefone}"/>
+                                <h:outputText value="Telefone"/>
+                                <h:outputText value="#{usuarioMB.selecionado.telefone}" title="Telefone"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_email}"/>
-                                <h:outputText value="#{usuarioController.selected.email}" title="#{prop.ViewUsuarioTitle_email}"/>
+                                <h:outputText value="E-mail"/>
+                                <h:outputText value="#{usuarioMB.selecionado.email}" title="E-mail"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_login}"/>
-                                <h:outputText value="#{usuarioController.selected.login}" title="#{prop.ViewUsuarioTitle_login}"/>
+                                <h:outputText value="Endereço"/>
+                                <h:outputText value="#{usuarioMB.selecionado.endereco}" title="Endereço"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_senha}"/>
-                                <h:outputText value="#{usuarioController.selected.senha}" title="#{prop.ViewUsuarioTitle_senha}"/>
+                                <h:outputText value="Número"/>
+                                <h:outputText value="#{usuarioMB.selecionado.numero}" title="Número"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_endereco}"/>
-                                <h:outputText value="#{usuarioController.selected.endereco}" title="#{prop.ViewUsuarioTitle_endereco}"/>
+                                <h:outputText value="Complemento"/>
+                                <h:outputText value="#{usuarioMB.selecionado.complemento}" title="Complemento"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_numero}"/>
-                                <h:outputText value="#{usuarioController.selected.numero}" title="#{prop.ViewUsuarioTitle_numero}"/>
+                                <h:outputText value="Bairro"/>
+                                <h:outputText value="#{usuarioMB.selecionado.bairro}" title="Bairro"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_complemento}"/>
-                                <h:outputText value="#{usuarioController.selected.complemento}" title="#{prop.ViewUsuarioTitle_complemento}"/>
+                                <h:outputText value="Cidade"/>
+                                <h:outputText value="#{usuarioMB.selecionado.cidade}" title="Cidade"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_bairro}"/>
-                                <h:outputText value="#{usuarioController.selected.bairro}" title="#{prop.ViewUsuarioTitle_bairro}"/>
+                                <h:outputText value="Estado"/>
+                                <h:outputText value="#{usuarioMB.selecionado.estado}" title="Estado"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_cidade}"/>
-                                <h:outputText value="#{usuarioController.selected.cidade}" title="#{prop.ViewUsuarioTitle_cidade}"/>
-
-                                <h:outputText value="#{prop.ViewUsuarioLabel_estado}"/>
-                                <h:outputText value="#{usuarioController.selected.estado}" title="#{prop.ViewUsuarioTitle_estado}"/>
-
-                                <h:outputText value="#{prop.ViewUsuarioLabel_cep}"/>
-                                <h:outputText value="#{usuarioController.selected.cep}" title="#{prop.ViewUsuarioTitle_cep}"/>
-
-                                <h:outputText value="#{prop.ViewUsuarioLabel_perfil}"/>
-                                <h:outputText value="#{usuarioController.selected.perfil}" title="#{prop.ViewUsuarioTitle_perfil}"/>
+                                <h:outputText value="CEP"/>
+                                <h:outputText value="#{usuarioMB.selecionado.cep}" title="CEP"/>
 
                             </p:panelGrid>
                         </p:tab>
-                        <p:tab id="UsuarioTab2" title="#{prop.TabHeaderPrefix} 2">
-                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioController.selected != null}">
-                                <h:outputText value="#{prop.ViewUsuarioLabel_isAtivo}"/>
-                                <h:outputText value="#{usuarioController.selected.isAtivo}" title="#{prop.ViewUsuarioTitle_isAtivo}"/>
+                        <p:tab id="UsuarioTab2" title="Dados Funcionais">
+                            <p:panelGrid columns="2" columnClasses="column" rendered="#{usuarioMB.selecionado != null}">
+                                <h:outputText value="ID"/>
+                                <h:outputText value="#{usuarioMB.selecionado.usuarioID}" title="ID"/>
+                            
+                                <h:outputText value="Ativo (1 - Sim / 0 - Não)"/>
+                                <h:outputText value="#{usuarioMB.selecionado.isAtivo}" title="Ativo?"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_isLogado}"/>
-                                <h:outputText value="#{usuarioController.selected.isLogado}" title="#{prop.ViewUsuarioTitle_isLogado}"/>
+                                <h:outputText value="Último Posicionamento (X)"/>
+                                <h:outputText value="#{usuarioMB.selecionado.latitude}" title="Último Posicionamento (X)"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_latitude}"/>
-                                <h:outputText value="#{usuarioController.selected.latitude}" title="#{prop.ViewUsuarioTitle_latitude}"/>
+                                <h:outputText value="Último Posicionamento (Y)"/>
+                                <h:outputText value="#{usuarioMB.selecionado.longitude}" title="Último Posicionamento (Y)"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_longitude}"/>
-                                <h:outputText value="#{usuarioController.selected.longitude}" title="#{prop.ViewUsuarioTitle_longitude}"/>
+                                <h:outputText value="Veículo"/>
+                                <h:outputText value="#{usuarioMB.selecionado.veiculo}" title="Veículo"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_veiculo}"/>
-                                <h:outputText value="#{usuarioController.selected.veiculo}" title="#{prop.ViewUsuarioTitle_veiculo}"/>
+                                <h:outputText value="Login"/>
+                                <h:outputText value="#{usuarioMB.selecionado.login}" title="Login"/>
+                                
+								<h:outputText value="Perfil"/>
+                                <h:outputText value="#{usuarioMB.selecionado.perfil}" title="A - Administrador / G - Gerente / E - Entregador"/>
 
-                                <h:outputText value="#{prop.ViewUsuarioLabel_autorizadorID}"/>
-                                <h:outputText value="#{usuarioController.selected.autorizadorID}" title="#{prop.ViewUsuarioTitle_autorizadorID}"/>
-
-                                <h:outputText value="#{prop.ViewUsuarioLabel_autorizacaoDate}"/>
-                                <h:outputText value="#{usuarioController.selected.autorizacaoDate}" title="#{prop.ViewUsuarioTitle_autorizacaoDate}">
-                                    <f:convertDateTime pattern="MM/dd/yyyy" />
+                                <h:outputText value="Data de Cadastro"/>
+                                <h:outputText value="#{usuarioMB.selecionado.autorizacaoDate}" title="Data de Cadastro">
+                                    <f:convertDateTime pattern="dd/MM/yyyy" />
                                 </h:outputText>
                             </p:panelGrid>
                         </p:tab>
                     </p:tabView>
-                    <p:commandButton value="#{prop.Close}" onclick="UsuarioViewDialog.hide()"/>
+                    <p:commandButton value="Fechar" onclick="UsuarioViewDialog.hide()"/>
                 </h:panelGroup>
 
             </h:form>

@@ -2,6 +2,7 @@ package br.com.somotoresentregas.util;
 
 import java.util.Iterator;
 import java.util.List;
+
 import javax.faces.application.FacesMessage;
 import javax.faces.component.UIComponent;
 import javax.faces.component.UIInput;

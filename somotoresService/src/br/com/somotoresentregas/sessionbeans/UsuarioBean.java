@@ -1,12 +1,9 @@
 package br.com.somotoresentregas.sessionbeans;
 
-import javax.ejb.Remove;
 import javax.ejb.Stateful;
-import javax.faces.context.FacesContext;
 import javax.persistence.EntityManager;
 import javax.persistence.NoResultException;
 import javax.persistence.PersistenceContext;
-import javax.servlet.http.HttpSession;
 
 import br.com.somotoresentregas.controller.AbstractEJB;
 import br.com.somotoresentregas.entities.Usuario;
@@ -26,41 +23,28 @@ public class UsuarioBean extends AbstractEJB<Usuario> {
 		return this.entityManager;
 	}	
 	
-	private Usuario usuario;
 
-	public boolean logarUsuario(String pLogin, String pSenha) {
+	public Usuario logarUsuario(Usuario pUsuario) {
 		try{
-			Usuario usuarioTemp = (Usuario) entityManager.createNamedQuery("Usuario.findByLogin")
-					.setParameter("login", pLogin)
-					.setParameter("senha", pSenha)
+			Usuario usuarioDB = (Usuario) entityManager.createNamedQuery("Usuario.findByLogin")
+					.setParameter("login", pUsuario.getLogin())
+					.setParameter("senha", pUsuario.getSenha())
 					.getSingleResult();
 			
-			if (pLogin.equals(usuarioTemp.getLogin()) && pSenha.equals(usuarioTemp.getSenha())) {
-				this.usuario = usuarioTemp;
-				HttpSession sessao = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-				sessao.setAttribute("usuario", usuario);
-				return true;
+			System.out.println("usuarioTemp Login: " + usuarioDB.getLogin());
+			System.out.println("usuarioTemp Senha: " + usuarioDB.getSenha());
+			
+			if (pUsuario.getLogin().equals(usuarioDB.getLogin()) && pUsuario.getSenha().equals(usuarioDB.getSenha())) {
+				System.out.println("vai retornar true");
+				return usuarioDB;
 			} else {
-				entityManager.detach(usuarioTemp);
-				return false;
+				entityManager.detach(usuarioDB);
+				usuarioDB = null;
+				System.out.println("vai retornar false");
+				return null;
 			}
 		}catch(NoResultException e){
-			return false;
+			return null;
 		}
 	}
-	
-	@Remove
-	public void removeEjbUsuario(){
-		usuario = null;
-	}
-
-//	public Usuario getUsuario() {
-//		return usuario;
-//	}
-//
-//	public void setUsuario(Usuario usuario) {
-//		this.usuario = usuario;
-//	}
-	
-	
 }

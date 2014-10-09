@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version="1.0" encoding="ISO-8859-1" ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:ui="http://java.sun.com/jsf/facelets"
@@ -7,108 +7,76 @@
       xmlns:p="http://primefaces.org/ui">
 
     <ui:composition>
-        <p:dialog id="UsuarioCreateDlg" widgetVar="UsuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Cadastrar UsuÃ¡rio" closeOnEscape="true">
+        <p:dialog id="UsuarioCreateDlg" widgetVar="UsuarioCreateDialog" modal="true" resizable="false" appendTo="@(body)" header="Cadastrar Usuário" closeOnEscape="true">
             <h:form id="UsuarioCreateForm">
-                <h:panelGroup id="display" rendered="#{usuarioController.selected != null}">
-                    <p:tabView id="UsuarioTabView">
+                <h:panelGroup id="display" rendered="#{usuarioMB.selecionado != null}">
+                            <p:panelGrid columns="4" columnClasses="column">
+                                <p:outputLabel value="Matricula (3 dígitos)" for="matricula" />
+                                <p:inputText id="matricula" value="#{usuarioMB.selecionado.matricula}" title="Matricula (3 dígitos)" required="true" requiredMessage="O preenchimento da matrícula é obrigatório (3 dígitos)" size="3" maxlength="3"/>
 
-                        <p:tab id="UsuarioTab1" title="#{prop.TabHeaderPrefix} 1">
-                            <p:panelGrid columns="2" columnClasses="column">
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_matricula}" for="matricula" />
-                                <p:inputText id="matricula" value="#{usuarioController.selected.matricula}" title="#{prop.CreateUsuarioTitle_matricula}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_matricula}" size="3" maxlength="3"/>
+                                <p:outputLabel value="Nome" for="nome" />
+                                <p:inputText id="nome" value="#{usuarioMB.selecionado.nome}" title="Nome" required="true" requiredMessage="O preenchimento do nome é obrigatório (Máximo 20 caracteres)" size="20" maxlength="20"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_nome}" for="nome" />
-                                <p:inputText id="nome" value="#{usuarioController.selected.nome}" title="#{prop.CreateUsuarioTitle_nome}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_nome}" size="40" maxlength="40"/>
+                                <p:outputLabel value="Sobrenome" for="sobrenome" />
+                                <p:inputText id="sobrenome" value="#{usuarioMB.selecionado.sobrenome}" title="Sobrenome" required="true" requiredMessage="O preenchimento do sobrenome é obrigatório (Máximo 20 caracteres)" size="20" maxlength="20"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_sobrenome}" for="sobrenome" />
-                                <p:inputText id="sobrenome" value="#{usuarioController.selected.sobrenome}" title="#{prop.CreateUsuarioTitle_sobrenome}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_sobrenome}" size="40" maxlength="40"/>
+                                <p:outputLabel value="Sexo (M/F)" for="sexo" />
+                                <p:inputText id="sexo" value="#{usuarioMB.selecionado.sexo}" title="Sexo" required="true" requiredMessage="O preenchimento do sexo é obrigatório (M ou F)/" size="1" maxlength="1" />
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_sexo}" for="sexo" />
-                                <p:inputText id="sexo" value="#{usuarioController.selected.sexo}" title="#{prop.CreateUsuarioTitle_sexo}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_sexo}"/>
+                                <p:outputLabel value="CPF (Somente números)" for="cpf" />
+                                <p:inputText id="cpf" value="#{usuarioMB.selecionado.cpf}" title="CPF" required="true" requiredMessage="O preenchimento do CPF é obrigatório (Somente números)" size="11" maxlength="11"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_cpf}" for="cpf" />
-                                <p:inputText id="cpf" value="#{usuarioController.selected.cpf}" title="#{prop.CreateUsuarioTitle_cpf}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_cpf}" size="11" maxlength="11"/>
+                                <p:outputLabel value="RG (Somente números)" for="rg" />
+                                <p:inputText id="rg" value="#{usuarioMB.selecionado.rg}" title="RG (Somente números)" size="8" maxlength="8"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_rg}" for="rg" />
-                                <p:inputText id="rg" value="#{usuarioController.selected.rg}" title="#{prop.CreateUsuarioTitle_rg}" size="8" maxlength="8"/>
+                                <p:outputLabel value="Data de Nascimento" for="nascimentoDate" />
+                                <p:calendar id="nascimentoDate" pattern="MM/dd/yyyy" value="#{usuarioMB.selecionado.nascimentoDate}" title="Data de Nascimento" required="true" requiredMessage="Selecione a sua data de nascimento" showOn="button"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_nascimentoDate}" for="nascimentoDate" />
-                                <p:calendar id="nascimentoDate" pattern="MM/dd/yyyy" value="#{usuarioController.selected.nascimentoDate}" title="#{prop.CreateUsuarioTitle_nascimentoDate}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_nascimentoDate}" showOn="button"/>
+                                <p:outputLabel value="Telefone (Ex.: 4188001234)" for="telefone" />
+                                <p:inputText id="telefone" value="#{usuarioMB.selecionado.telefone}" title="Telefone" size="20" maxlength="20"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_telefone}" for="telefone" />
-                                <p:inputText id="telefone" value="#{usuarioController.selected.telefone}" title="#{prop.CreateUsuarioTitle_telefone}" size="20" maxlength="20"/>
+                                <p:outputLabel value="E-mail" for="email" />
+                                <p:inputText id="email" value="#{usuarioMB.selecionado.email}" title="E-mail" size="20" maxlength="40"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_email}" for="email" />
-                                <p:inputText id="email" value="#{usuarioController.selected.email}" title="#{prop.CreateUsuarioTitle_email}" size="40" maxlength="40"/>
+                                <p:outputLabel value="Login (até 10 caracteres)" for="login" />
+                                <p:inputText id="login" value="#{usuarioMB.selecionado.login}" title="Login (até 10 caracteres)" required="true" requiredMessage="O preenchimento do login é obrigatório (até 10 caracteres)" size="10" maxlength="10"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_login}" for="login" />
-                                <p:inputText id="login" value="#{usuarioController.selected.login}" title="#{prop.CreateUsuarioTitle_login}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_login}" size="20" maxlength="20"/>
+                                <p:outputLabel value="Senha Inicial (até 8 caracteres)" for="senha" />
+                                <p:password id="senha" value="#{usuarioMB.selecionado.senha}" title="Senha Inical (até 8 caracteres)" required="true" requiredMessage="O preenchimendo da senha inicial é obrigatório (até 8 caracteres)" size="10" maxlength="8"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_senha}" for="senha" />
-                                <p:inputText id="senha" value="#{usuarioController.selected.senha}" title="#{prop.CreateUsuarioTitle_senha}" required="true" requiredMessage="#{prop.CreateUsuarioRequiredMessage_senha}" size="8" maxlength="8"/>
+                                <p:outputLabel value="Endereço" for="endereco" />
+                                <p:inputText id="endereco" value="#{usuarioMB.selecionado.endereco}" title="Endereço" size="20" maxlength="100"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_endereco}" for="endereco" />
-                                <p:inputText id="endereco" value="#{usuarioController.selected.endereco}" title="#{prop.CreateUsuarioTitle_endereco}" size="100" maxlength="100"/>
+                                <p:outputLabel value="Número" for="numero" />
+                                <p:inputText id="numero" value="#{usuarioMB.selecionado.numero}" title="Número" size="4" maxlength="4" />
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_numero}" for="numero" />
-                                <p:inputText id="numero" value="#{usuarioController.selected.numero}" title="#{prop.CreateUsuarioTitle_numero}"/>
+                                <p:outputLabel value="Complemento" for="complemento" />
+                                <p:inputText id="complemento" value="#{usuarioMB.selecionado.complemento}" title="Complemento" size="20" maxlength="40"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_complemento}" for="complemento" />
-                                <p:inputText id="complemento" value="#{usuarioController.selected.complemento}" title="#{prop.CreateUsuarioTitle_complemento}" size="40" maxlength="40"/>
+                                <p:outputLabel value="Bairro" for="bairro" />
+                                <p:inputText id="bairro" value="#{usuarioMB.selecionado.bairro}" title="Bairro" size="20" maxlength="30"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_bairro}" for="bairro" />
-                                <p:inputText id="bairro" value="#{usuarioController.selected.bairro}" title="#{prop.CreateUsuarioTitle_bairro}" size="30" maxlength="30"/>
+                                <p:outputLabel value="Cidade" for="cidade" />
+                                <p:inputText id="cidade" value="#{usuarioMB.selecionado.cidade}" title="Cidade" size="20" maxlength="30"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_cidade}" for="cidade" />
-                                <p:inputText id="cidade" value="#{usuarioController.selected.cidade}" title="#{prop.CreateUsuarioTitle_cidade}" size="30" maxlength="30"/>
+                                <p:outputLabel value="Estado" for="estado" />
+                                <p:inputText id="estado" value="#{usuarioMB.selecionado.estado}" title="Estado" size="2" maxlength="2"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_estado}" for="estado" />
-                                <p:inputText id="estado" value="#{usuarioController.selected.estado}" title="#{prop.CreateUsuarioTitle_estado}" size="2" maxlength="2"/>
+                                <p:outputLabel value="CEP" for="cep" />
+                                <p:inputText id="cep" value="#{usuarioMB.selecionado.cep}" title="CEP" size="8" maxlength="8"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_cep}" for="cep" />
-                                <p:inputText id="cep" value="#{usuarioController.selected.cep}" title="#{prop.CreateUsuarioTitle_cep}" size="8" maxlength="8"/>
+                                <p:outputLabel value="Perfil (G: gerente / E: entregador)" for="perfil" />
+                                <p:inputText id="perfil" value="#{usuarioMB.selecionado.perfil}" title="Perfil (G: gerente / E: entregador)" size="1" maxlength="1"/>
 
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_perfil}" for="perfil" />
-                                <p:inputText id="perfil" value="#{usuarioController.selected.perfil}" title="#{prop.CreateUsuarioTitle_perfil}"/>
-
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_isAtivo}" for="isAtivo" />
-                                <p:inputText id="isAtivo" value="#{usuarioController.selected.isAtivo}" title="#{prop.CreateUsuarioTitle_isAtivo}"/>
-
+                                <p:outputLabel value="Veículo" for="veiculo" />
+                                <p:inputText id="veiculo" value="#{usuarioMB.selecionado.veiculo}" title="Veículo" size="20" maxlength="50"/>
                             </p:panelGrid>
-                        </p:tab>
-                        <p:tab id="UsuarioTab2" title="#{prop.TabHeaderPrefix} 2">
-                            <p:panelGrid columns="2" columnClasses="column">
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_isLogado}" for="isLogado" />
-                                <p:inputText id="isLogado" value="#{usuarioController.selected.isLogado}" title="#{prop.CreateUsuarioTitle_isLogado}"/>
-
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_latitude}" for="latitude" />
-                                <p:inputText id="latitude" value="#{usuarioController.selected.latitude}" title="#{prop.CreateUsuarioTitle_latitude}"/>
-
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_longitude}" for="longitude" />
-                                <p:inputText id="longitude" value="#{usuarioController.selected.longitude}" title="#{prop.CreateUsuarioTitle_longitude}"/>
-
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_veiculo}" for="veiculo" />
-                                <p:inputText id="veiculo" value="#{usuarioController.selected.veiculo}" title="#{prop.CreateUsuarioTitle_veiculo}" size="50" maxlength="50"/>
-
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_autorizadorID}" for="autorizadorID" />
-                                <p:inputText id="autorizadorID" value="#{usuarioController.selected.autorizadorID}" title="#{prop.CreateUsuarioTitle_autorizadorID}"/>
-
-                                <p:outputLabel value="#{prop.CreateUsuarioLabel_autorizacaoDate}" for="autorizacaoDate" />
-                                <p:calendar id="autorizacaoDate" pattern="MM/dd/yyyy" value="#{usuarioController.selected.autorizacaoDate}" title="#{prop.CreateUsuarioTitle_autorizacaoDate}"  showOn="button"/>
-                            </p:panelGrid>
-                        </p:tab>
-                    </p:tabView>
-                    <p:commandButton actionListener="#{usuarioController.saveNew}" value="#{prop.Save}" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UsuarioCreateDialog);">
-                        <p:confirm header="#{prop.ConfirmationHeader}" message="#{prop.ConfirmCreateMessage}" icon="ui-icon-alert"/>
+                    <p:commandButton actionListener="#{usuarioMB.insere}" value="Cadastrar" update="display,:UsuarioListForm:datalist,:growl" oncomplete="handleSubmit(xhr,status,args,UsuarioCreateDialog);">
+                        <p:confirm header="Cadastro de Usuário" message="Confirmar o cadastramento do Usuário?" icon="ui-icon-alert"/>
                     </p:commandButton>
-
-                    <p:commandButton value="#{prop.Cancel}" onclick="UsuarioCreateDialog.hide()"/>
+                    <p:commandButton value="Cancelar" onclick="UsuarioCreateDialog.hide()"/>
                 </h:panelGroup>
-
             </h:form>
-
         </p:dialog>
-
     </ui:composition>
-
 </html>

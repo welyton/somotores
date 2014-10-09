@@ -11,6 +11,7 @@ import javax.persistence.PersistenceContext;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
+import br.com.somotoresentregas.controller.AbstractEJB;
 import br.com.somotoresentregas.entities.Entrega;
 import br.com.somotoresentregas.entities.Usuario;
 import br.com.somotoresentregas.util.Constantes;
@@ -18,26 +19,26 @@ import br.com.somotoresentregas.views.Alertas;
 import br.com.somotoresentregas.views.AlertasDiferenca;
 
 @Stateless
-public class AlertaBean {
+public class AlertaBean extends AbstractEJB<Alertas> {
 
 	@PersistenceContext
 	EntityManager entityManager;
-
-	private List<Alertas> alertas;
-	private Entrega entrega;
-
-	@SuppressWarnings("unchecked") 
-	public List<Alertas> getAlertas() {
-		alertas = (List<Alertas>) entityManager.createNamedQuery("Alertas.findAll").getResultList();
-		return alertas;
+	
+	public AlertaBean(){
+		super(Alertas.class);
 	}
+	
+	@Override
+	protected EntityManager getEntityManager(){
+		return this.entityManager;
+	}
+	private Entrega entrega;
 
 	public void desativaAlerta(Alertas pAlerta) {
 		try {
 			entrega = (Entrega) entityManager.createNamedQuery("Entrega.findById").setParameter("id", pAlerta.getEntregaID()).getSingleResult();
-			System.out.println(entrega.getDestinatario());
 			entrega.setIsAlerta(Constantes.DESATIVA_ALERTA);
-			entityManager.persist(entrega);
+			entityManager.merge(entrega);
 		} catch (NullPointerException e) {
 			e.printStackTrace();
 		}

@@ -1,20 +1,34 @@
-<?xml version="1.0" encoding="UTF-8" ?>
+<?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-<ui:composition xmlns:ui="http://java.sun.com/jsf/facelets"
+<html xmlns="http://www.w3.org/1999/xhtml"
+				xmlns:ui="http://java.sun.com/jsf/facelets"
                 xmlns:h="http://java.sun.com/jsf/html"
                 xmlns:f="http://java.sun.com/jsf/core"
-                xmlns:p="http://primefaces.org/ui"
-                template="/layout/template.xhtml">
-
+                xmlns:p="http://primefaces.org/ui">
+                
+<h:body>
+	<ui:composition template="/layout/template.xhtml">
+		<ui:define name="content">
+			<p:growl id="msg" showDetail="true"/>
+			<h:form id="formBusca">
+				<p:spacer/>
+				<p:panel header="Busca de Produtos" style="margin-bottom:10px">
+					<h:panelGrid columns="1">
+						<h:panelGrid columns="4" cellpadding="5">
+							<h:outputText value="Data:"/>
+							<p:calendar value="" pattern="dd/MM/yyyy" effect="explode"/>
+						</h:panelGrid>
+					</h:panelGrid>
+				</p:panel>
+			</h:form>
+		</ui:define>
+	</ui:composition>
+</h:body>
     <ui:define name="title">Gerenciamento de Categorias</ui:define>
-
     <ui:define name="body">
-
         <ui:include src="/categoria/Lista.xhtml"/>
         <ui:include src="/categoria/Visualizar.xhtml"/>
         <ui:include src="/categoria/Editar.xhtml"/>
         <ui:include src="/categoria/Cadastrar.xhtml"/>
-
     </ui:define>
-
-</ui:composition>
+</html>

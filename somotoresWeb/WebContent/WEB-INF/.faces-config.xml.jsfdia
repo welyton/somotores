@@ -1,13 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <PROCESS model-entity="JSFProcess">
  <PROCESS-ITEM NAME="rules:#login.xhtml" PATH="/login.xhtml"
-  SHAPE="176,107,0,0" model-entity="JSFProcessGroup">
+  SHAPE="144,80,50,41" model-entity="JSFProcessGroup">
   <PROCESS-ITEM ID="rules:#login.xhtml:0" NAME="item"
    PATH="/login.xhtml" model-entity="JSFProcessItem">
-   <PROCESS-ITEM-OUTPUT ID="home::#index.xhtml" NAME="output"
-    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="home" model-entity="JSFProcessItemOutput"/>
+   <PROCESS-ITEM-OUTPUT ID="index::#index.xhtml" NAME="output"
+    PATH="/index.xhtml" TARGET="rules:#index.xhtml" TITLE="index" model-entity="JSFProcessItemOutput"/>
   </PROCESS-ITEM>
  </PROCESS-ITEM>
  <PROCESS-ITEM NAME="rules:#index.xhtml" PATH="/index.xhtml"
-  SHAPE="424,160,50,25" model-entity="JSFProcessGroup"/>
+  SHAPE="424,96,50,25" model-entity="JSFProcessGroup"/>
+ <PROCESS-ITEM NAME="rules:#mobile#login.xhtml"
+  PATH="/mobile/login.xhtml" SHAPE="80,232,50,41" model-entity="JSFProcessGroup">
+  <PROCESS-ITEM ID="rules:#mobile#login.xhtml:0" NAME="item"
+   PATH="/mobile/login.xhtml" model-entity="JSFProcessItem">
+   <PROCESS-ITEM-OUTPUT ID="index::#mobile#index.xhtml" NAME="output"
+    PATH="/mobile/index.xhtml" TARGET="rules:#mobile#index.xhtml"
+    TITLE="index" model-entity="JSFProcessItemOutput"/>
+  </PROCESS-ITEM>
+ </PROCESS-ITEM>
+ <PROCESS-ITEM NAME="rules:#mobile#index.xhtml"
+  PATH="/mobile/index.xhtml" SHAPE="288,224,50,41" model-entity="JSFProcessGroup"/>
 </PROCESS>

@@ -1,27 +1,35 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-	xmlns:ui="http://java.sun.com/jsf/facelets"
-	xmlns:h="http://java.sun.com/jsf/html"
-	xmlns:f="http://java.sun.com/jsf/core"
-	xmlns:p="http://primefaces.org/ui">
-<ui:composition template="/layout/template.xhtml">
-	<ui:define name="title">Login</ui:define>
-	<ui:define name="header"></ui:define>
-	<ui:define name="footer"></ui:define>
-	<ui:define name="body">
-		<div align="center">
-			<h:form>
-				<p:graphicImage value="/resources/img/logo.png"/>
-				<h:panelGrid columns="2" border="0">
-					<p:outputLabel for="login" value="Login:" />
-					<p:inputText id="login" value="#{loginMB.login}" label="login" />
-					<p:outputLabel for="senha" value="Senha:" />
-					<p:password id="senha" label="senha" value="#{loginMB.senha}"/>
-					<h:outputText value="" />
-					<p:commandButton value="Entrar" action="#{loginMB.logar()}"/>
-					<h:messages/>
-				</h:panelGrid>
-			</h:form>
-		</div>
-	</ui:define>
-</ui:composition>
+				xmlns:ui="http://java.sun.com/jsf/facelets"
+                xmlns:h="http://java.sun.com/jsf/html"
+                xmlns:f="http://java.sun.com/jsf/core"
+                xmlns:p="http://primefaces.org/ui"
+                template="/layout/template.xhtml">
+<h:head>
+	<title>Só Motores SGE - Login</title>
+	<h:outputStylesheet library="css" name="login.css" />
+	<h:outputScript library="scripts" name="somotores.js"/>
+</h:head>
+<h:body>
+	<div class="container">
+		<p:growl id="growl" showDetail="true" life="3000"/>
+		<h:form id="formLogin">
+			<p:panel id="painel" header="Só Motores - SGE: Login">
+				<div class="ui-menu ui-menubar ui-widget ui-widget-content ui-corner-all ui-helper-clearfix">
+					<p:graphicImage value="#{aplicacaoMB.pathImagem}logo.png"/>
+					<h:panelGrid columns="2" cellpadding="5">
+						<h:outputLabel for="login" value="Login:"/>
+						<p:inputText id="login" value="#{loginMB.usuario.login}" required="true" label="login" requiredMessage="O preenchimento do login é obrigatório" size="8" maxlength="20"/>
+						<h:outputLabel for="senha" value="Senha:"/>
+						<p:password id="senha" value="#{loginMB.usuario.senha}" required="true" label="senha" requiredMessage="O preenchimento do campo senha é obrigatório" size="8" maxlength="8"/>
+						<f:facet name="footer">
+							<p:commandButton value="Entrar" update=":growl" actionListener="#{loginMB.logar}" icon="ui-icon-check" oncomplete="handleLoginRequest(xhr, status, args)"/>
+						</f:facet>
+					</h:panelGrid>
+				</div>
+			</p:panel>
+		</h:form>
+	</div>
+</h:body>		
 </html>

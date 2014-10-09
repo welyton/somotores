@@ -1,51 +1,29 @@
 package br.com.somotoresentregas.managedbeans;
 
-import java.util.List;
-
-import javax.ejb.EJB;
-import javax.faces.bean.ManagedBean;
+import javax.faces.event.ActionEvent;
 import javax.faces.view.ViewScoped;
+import javax.inject.Inject;
+import javax.inject.Named;
 
+import br.com.somotoresentregas.controller.AbstractManagedBean;
 import br.com.somotoresentregas.sessionbeans.AlertaBean;
 import br.com.somotoresentregas.views.Alertas;
 
-@ManagedBean
+@Named(value="alertaMB")
 @ViewScoped
-public class AlertaMB {
+public class AlertaMB extends AbstractManagedBean<Alertas>{
 	
-	@EJB
-	private AlertaBean alertaService;
-
-	private List<Alertas> alertas;
-	private Alertas alertaSelected;
-
-	public List<Alertas> getAlertas() {
-		if (alertas == null) {
-			alertas = alertaService.getAlertas();
-		}
-		return alertas;
-	}
-
-	public void setAlertas(List<Alertas> alertas) {
-		this.alertas = alertas;
+	private static final long serialVersionUID = 1L;
+	
+	@Inject
+	private AlertaBean alertaService;	
+	
+	public AlertaMB(){
+		super(Alertas.class);
 	}
 	
-	public void removeAlerta(){
-		alertaService.desativaAlerta(alertaSelected);
+	public void removeAlerta(ActionEvent evento){
+		System.out.println("AlertaMB - removeAlerta");
+		alertaService.desativaAlerta(super.getSelecionado());
 	}
-	
-	public boolean isUsuarioAdmin(){
-		return "A".equals(alertaService.verificaPerfilUsuario());
-	}
-
-	public Alertas getAlertaSelected() {
-		return alertaSelected;
-	}
-
-	public void setAlertaSelected(Alertas alertaSelected) {
-		this.alertaSelected = alertaSelected;
-	}
-	
-	
-	
 }
