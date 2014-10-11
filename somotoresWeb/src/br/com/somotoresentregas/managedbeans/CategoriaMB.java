@@ -1,12 +1,12 @@
 package br.com.somotoresentregas.managedbeans;
 
+import javax.faces.bean.ManagedBean;
 import javax.faces.view.ViewScoped;
-import javax.inject.Named;
 
 import br.com.somotoresentregas.controller.AbstractManagedBean;
 import br.com.somotoresentregas.entities.Categoria;
 
-@Named(value="categoriaMB")
+@ManagedBean
 @ViewScoped
 public class CategoriaMB extends AbstractManagedBean<Categoria>{
 	
@@ -16,7 +16,7 @@ public class CategoriaMB extends AbstractManagedBean<Categoria>{
 		super(Categoria.class);
 	}
 	
-	//Artifício para funcionar Ajax
+	//Artifï¿½cio para funcionar Ajax
 	public void resetParents(){
 		
 	}

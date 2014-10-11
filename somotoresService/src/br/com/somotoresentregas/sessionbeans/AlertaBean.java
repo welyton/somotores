@@ -15,8 +15,8 @@ import br.com.somotoresentregas.controller.AbstractEJB;
 import br.com.somotoresentregas.entities.Entrega;
 import br.com.somotoresentregas.entities.Usuario;
 import br.com.somotoresentregas.util.Constantes;
-import br.com.somotoresentregas.views.Alertas;
-import br.com.somotoresentregas.views.AlertasDiferenca;
+import br.com.somotoresentregas.repository.Alertas;
+import br.com.somotoresentregas.repository.AlertasDiferenca;
 
 @Stateless
 public class AlertaBean extends AbstractEJB<Alertas> {
@@ -63,9 +63,9 @@ public class AlertaBean extends AbstractEJB<Alertas> {
 		}
 	}
 	
-	public String verificaPerfilUsuario(){
-		HttpSession sessao = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
-		Usuario usuario = (Usuario) sessao.getAttribute("usuario");
-		return usuario.getPerfil().toUpperCase();
-	}
+//	public String verificaPerfilUsuario(){
+//		HttpSession sessao = (HttpSession) FacesContext.getCurrentInstance().getExternalContext().getSession(false);
+//		Usuario usuario = (Usuario) sessao.getAttribute("usuario");
+//		return usuario.getPerfil().toUpperCase();
+//	}
 }
